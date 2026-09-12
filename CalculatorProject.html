@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Calculator</title>
+<style>
+body {
+  background-color: rgba(214, 205, 100, 0.922);
+  font-family: Arial;
+  text-align: center;
+}
+
+.calc {
+  width: 250px;
+  margin: 50px auto;
+  background-color: #150610;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+#display {
+  width: 100%;
+  height: 50px;
+  font-size: 24px;
+  text-align: right;
+  padding: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+}
+
+button {
+  height: 50px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.op {
+  background-color: rgb(158, 157, 191);
+}
+
+.equal {
+  background-color: rgb(101, 174, 101);
+  color: white;
+}
+
+.clear {
+  background-color: rgb(206, 126, 126);
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h2>BASIC ARITHMETIC CALCULATOR</h2>
+
+<div class="calc">
+  <input type="text" id="display" value="0" disabled>
+
+  <div class="buttons">
+    <button class="clear" onclick="clearDisplay()">C</button>
+    <button onclick="deleteLast()">DEL</button>
+    <button class="op" onclick="chooseOperator('%')">%</button>
+    <button class="op" onclick="chooseOperator('/')">/</button>
+
+    <button onclick="pressNumber('7')">7</button>
+    <button onclick="pressNumber('8')">8</button>
+    <button onclick="pressNumber('9')">9</button>
+    <button class="op" onclick="chooseOperator('*')">*</button>
+
+    <button onclick="pressNumber('4')">4</button>
+    <button onclick="pressNumber('5')">5</button>
+    <button onclick="pressNumber('6')">6</button>
+    <button class="op" onclick="chooseOperator('-')">-</button>
+
+    <button onclick="pressNumber('1')">1</button>
+    <button onclick="pressNumber('2')">2</button>
+    <button onclick="pressNumber('3')">3</button>
+    <button class="op" onclick="chooseOperator('+')">+</button>
+
+    <button onclick="pressNumber('0')">0</button>
+    <button onclick="pressNumber('.')">.</button>
+    <button class="equal" onclick="calculate()">=</button>
+  </div>
+</div>
+
+<script>
+// variables to keep track of what the user is doing
+var currentValue = "0";
+var firstNumber = "";
+var operator = "";
+
+// this runs every time we need to update what is shown
+function updateDisplay() {
+  document.getElementById("display").value = currentValue;
+}
+
+// when a number button is pressed
+function pressNumber(num) {
+  if (currentValue == "0") {
+    currentValue = num;
+  } else {
+    currentValue = currentValue + num;
+  }
+  updateDisplay();
+}
+
+// when + - * / % is pressed
+function chooseOperator(op) {
+  firstNumber = currentValue;
+  operator = op;
+  currentValue = "0";
+}
+
+// clear everything
+function clearDisplay() {
+  currentValue = "0";
+  firstNumber = "";
+  operator = "";
+  updateDisplay();
+}
+
+// delete the last number typed
+function deleteLast() {
+  if (currentValue.length > 1) {
+    currentValue = currentValue.substring(0, currentValue.length - 1);
+  } else {
+    currentValue = "0";
+  }
+  updateDisplay();
+}
+
+// do the actual math
+function calculate() {
+  var num1 = parseFloat(firstNumber);
+  var num2 = parseFloat(currentValue);
+  var result = 0;
+
+  // loop just to double check both numbers are valid (basic check)
+  var numbersToCheck = [num1, num2];
+  for (var i = 0; i < numbersToCheck.length; i++) {
+    if (isNaN(numbersToCheck[i])) {
+      alert("Please enter numbers correctly!");
+      return;
+    }
+  }
+
+  if (operator == "+") {
+    result = num1 + num2;
+  } else if (operator == "-") {
+    result = num1 - num2;
+  } else if (operator == "*") {
+    result = num1 * num2;
+  } else if (operator == "/") {
+    if (num2 == 0) {
+      alert("Can't divide by zero!");
+      clearDisplay();
+      return;
+    }
+    result = num1 / num2;
+  } else if (operator == "%") {
+    result = num1 % num2;
+  } else {
+    result = num2;
+  }
+
+  currentValue = result.toString();
+  updateDisplay();
+}
+</script>
+
+</body>
+</html>
