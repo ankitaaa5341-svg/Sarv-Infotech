@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marie Curie Tribute Page</title>
+  <style>
+
+    /* basic reset, just so margins don't mess up my layout */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background-color: #b797a4;
+      color: #2c1f27;
+      line-height: 1.6; 
+    }
+
+    /* ===== HEADER / TITLE SECTION ===== */
+
+    #main {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 30px;
+    }
+
+    #title {
+      text-align: center;
+      color: #45142f;
+      font-size: 42px;
+      margin-top: 20px;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #c53c74;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    #img-div {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #image {
+      width: 100%;
+      max-width: 500px;
+      border: 5px solid #45142f;
+      border-radius: 6px;
+    }
+
+    #img-caption {
+      font-size: 14px;
+      color: #777777;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* ===== INTRO TEXT ===== */
+
+    #tribute-info p {
+      margin-bottom: 15px;
+      font-size: 17px;
+    }
+
+    /* little box with the quick facts, nothing fancy, just a border */
+    .facts-box {
+      background-color: #f1e0d2;
+      border-left: 5px solid #b3903f;
+      padding: 15px;
+      margin: 20px 0;
+    }
+
+    .facts-box p {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .facts-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ===== TIMELINE ===== */
+
+    h2 {
+      color: #45142f;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #c53c74;
+      padding-bottom: 5px;
+    }
+
+    .timeline-item {
+      margin-bottom: 18px;
+      padding-left: 15px;
+      border-left: 3px solid #c53c74;
+    }
+
+    .timeline-item h3 {
+      color: #45142f;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item span {
+      font-weight: bold;
+      color: #c53c74;
+    }
+
+    /* ===== WHAT MADE HER GREAT LIST ===== */
+
+    #qualities ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    #qualities li {
+      margin-bottom: 15px;
+      padding: 12px;
+      background-color: #f1e0d2;
+      border-radius: 4px;
+    }
+
+    #qualities li strong {
+      color: #45142f;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ===== THE ONLY WOMAN SECTION ===== */
+    /* this part is about her being the only woman at the
+       1927 Solvay conference photo, wanted to include it but
+       not make the WHOLE page about that */
+
+    #solvay {
+      background-color: #45142f;
+      color: #faf1ea;
+      padding: 25px;
+      margin-top: 35px;
+      border-radius: 6px;
+    }
+
+    #solvay h2 {
+      color: #ffffff;
+      border-bottom: 2px solid #c53c74;
+    }
+
+    #solvay p {
+      margin-bottom: 15px;
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 30px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .stat-box {
+      text-align: center;
+    }
+
+    .stat-box .number {
+      font-size: 28px;
+      font-weight: bold;
+      color: #e79bbb;
+    }
+
+    .stat-box .label {
+      font-size: 13px;
+      color: #dcc9d3;
+    }
+
+    #solvay-photo {
+      width: 100%;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    .solvay-caption {
+      font-size: 13px;
+      color: #dcc9d3;
+      font-style: italic;
+      margin-top: 6px;
+    }
+
+    /* ===== QUOTE ===== */
+
+    blockquote {
+      text-align: center;
+      font-style: italic;
+      font-size: 20px;
+      color: #45142f;
+      margin: 35px 0;
+      padding: 20px;
+      border-top: 1px solid #c53c74;
+      border-bottom: 1px solid #c53c74;
+    }
+
+    /* ===== FOOTER ===== */
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #777777;
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid #ddd;
+    }
+
+    #tribute-link {
+      color: #c53c74;
+    }
+
+    /* small screens */
+    @media (max-width: 600px) {
+      #main {
+        padding: 15px;
+      }
+      #title {
+        font-size: 30px;
+      }
+      .stat-row {
+        gap: 15px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="main">
+
+    <h1 id="title">Marie Curie</h1>
+    <p class="subtitle">Scientist. Two-time Nobel Prize winner. The only woman in the room.</p>
+
+    <div id="img-div">
+      <img id="image" src="https://commons.wikimedia.org/wiki/Special:FilePath/Marie_Curie_c._1920s.jpg" alt="Portrait of Marie Curie">
+      <p id="img-caption">Marie Curie, photographed in the 1920s. Source: Wikimedia Commons (public domain)</p>
+    </div>
+
+    <div id="tribute-info">
+      <p>
+        Marie Sklodowska Curie moved from Warsaw to Paris in 1891 to study at the Sorbonne.
+        She finished first in her class in physics, and first again in math two years after that.
+        Working with her husband Pierre in a small lab, she discovered two new elements: polonium,
+        named after her home country Poland, and radium.
+      </p>
+      <p>
+        Her work wasn't easy or quick. She had to process tons of ore by hand just to get a small
+        amount of pure radium, and she kept at it for years even though it slowly damaged her health.
+      </p>
+
+      <div class="facts-box">
+        <p><strong>Born:</strong> November 7, 1867, Warsaw, Poland</p>
+        <p><strong>Nobel Prize (Physics):</strong> 1903, shared with Pierre Curie and Henri Becquerel</p>
+        <p><strong>Nobel Prize (Chemistry):</strong> 1911, won alone</p>
+        <p><strong>Discovered:</strong> Polonium and radium</p>
+        <p><strong>Died:</strong> July 4, 1934</p>
+      </div>
+    </div>
+
+    <h2>Timeline</h2>
+
+    <div class="timeline-item">
+      <span>1891</span>
+      <h3>Moves to Paris</h3>
+      <p>Enrolls at the Sorbonne after studying in secret back home, since women weren't allowed into Poland's regular universities at the time.</p>
+    </div>
+
+    <div class="timeline-item">
+      <span>1898</span>
+      <h3>Discovers polonium and radium</h3>
+      <p>Comes up with the word "radioactivity" to describe what she's seeing in her research.</p>
+    </div>
+
+    <div class="timeline-item">
+      <span>1903</span>
+      <h3>Wins her first Nobel Prize</h3>
+      <p>Becomes the first woman to ever win a Nobel Prize, in Physics, shared with Pierre and Henri Becquerel.</p>
+    </div>
+
+    <div class="timeline-item">
+      <span>1911</span>
+      <h3>Wins her second Nobel Prize</h3>
+      <p>This time in Chemistry, and this one is hers alone. No one else has ever won Nobel Prizes in two different sciences.</p>
+    </div>
+
+    <div class="timeline-item">
+      <span>1914-1918</span>
+      <h3>Builds mobile X-ray units</h3>
+      <p>During WWI she personally set up X-ray vehicles (called "petites Curies") and trained women to run them near the front lines.</p>
+    </div>
+
+    <h2 id="qualities">What Made Her Great</h2>
+    <ul>
+      <li>
+        <strong>She didn't accept answers she couldn't prove.</strong>
+        Instead of just assuming radioactivity was a chemical reaction, she spent years measuring it exactly.
+      </li>
+      <li>
+        <strong>She didn't patent her discovery.</strong>
+        She and Pierre could have made a fortune from the radium extraction process but chose to let
+        other scientists use it freely instead.
+      </li>
+      <li>
+        <strong>She kept going after Pierre died.</strong>
+        In 1906 she took over his teaching position at the Sorbonne, becoming the first woman to teach there.
+      </li>
+      <li>
+        <strong>She showed up when it mattered.</strong>
+        During WWI she didn't wait around, she personally got X-ray equipment out to soldiers who needed it.
+      </li>
+    </ul>
+
+    <div id="solvay">
+      <h2>The Only Woman in the Room</h2>
+      <p>
+        In 1927, Marie Curie was invited to the Solvay Conference in Brussels, a meeting of the top
+        physicists of the time. In the famous group photo from that conference, she's the only woman,
+        sitting just two seats away from Einstein.
+      </p>
+
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="number">1 of 29</div>
+          <div class="label">she was the only woman there</div>
+        </div>
+        <div class="stat-box">
+          <div class="number">17</div>
+          <div class="label">people in the photo who won a Nobel Prize</div>
+        </div>
+      </div>
+
+      <p>
+        It wasn't easy for her to even get that kind of recognition. In 1911, the French Academy of
+        Sciences rejected her application for membership by just two votes, only months before she
+        won her second Nobel Prize. She never let that stop her, and that's part of why she's still
+        such a big deal for women in science today.
+      </p>
+
+      <img id="solvay-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Solvay_conference_1927.jpg" alt="Group photo from the 1927 Solvay Conference">
+      <p class="solvay-caption">Solvay Conference, Brussels, 1927. Source: Wikimedia Commons (public domain)</p>
+    </div>
+
+    <blockquote>
+      "Nothing in life is to be feared, it is only to be understood.
+      Now is the time to understand more, so that we may fear less."
+      <br>- Marie Curie
+    </blockquote>
+
+    <footer>
+      <p>Made by me for my web development internship project.</p>
+      <p><a id="tribute-link" href="https://en.wikipedia.org/wiki/Marie_Curie" target="_blank">Read more about her on Wikipedia</a></p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
